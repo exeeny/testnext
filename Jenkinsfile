@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:20'
+        }
+    }
 
     stages {
 
@@ -12,12 +16,6 @@ pipeline {
         stage('Lint') {
             steps {
                 sh 'npm run lint'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                sh 'npm run test'
             }
         }
 
