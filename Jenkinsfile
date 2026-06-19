@@ -3,33 +3,27 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
+        stage('Install dependencies') {
             steps {
-                checkout scm
-            }
-        }
-
-        stage('Install') {
-            steps {
-                echo 'Installing dependencies...'
+                sh 'npm install'
             }
         }
 
         stage('Lint') {
             steps {
-                echo 'Running lint...'
+                sh 'npm run lint'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running tests...'
+                sh 'npm run test'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Building project...'
+                sh 'npm run build'
             }
         }
     }
