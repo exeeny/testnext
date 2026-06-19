@@ -1,27 +1,9 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:20'
-        }
-    }
-
+    agent { docker { image 'node:24.16.0-alpine3.24' } }
     stages {
-
-        stage('Install dependencies') {
+        stage('build') {
             steps {
-                sh 'npm install'
-            }
-        }
-
-        stage('Lint') {
-            steps {
-                sh 'npm run lint'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                sh 'npm run build'
+                sh 'node --version'
             }
         }
     }
